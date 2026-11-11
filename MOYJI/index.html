@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MOYJI — 모아두고, 다시 찾는 기록들..</title>
+
+  <meta
+    name="description"
+    content="MOYJI — 뭐였지? 여기 있지. 모아두고, 다시 찾는 기록들.."
+  >
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* MEMTH LINK */
+
+    .memth-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 24px;
+      padding-bottom: 3px;
+      color: #07593c;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .memth-link:hover {
+      color: #043c28;
+    }
+
+    /* LATEST UPDATE LINK */
+
+    .focus-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      align-self: flex-start;
+      margin-top: 32px;
+      padding-bottom: 5px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid #777777;
+    }
+
+    .focus-link:hover {
+      color: #bde3ce;
+      border-color: #bde3ce;
+    }
+
+    /* PROJECT CARD FOOTER */
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card .memth-link {
+      align-self: flex-start;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    .project-note {
+      margin-top: auto;
+      padding-top: 24px;
+      color: #929292;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav class="top-nav">
+
+    <div class="nav-inner">
+
+      <a class="nav-logo" href="#top">
+        MOYJI
+      </a>
+
+      <div class="nav-links">
+        <a class="nav-studio" href="../">HIDY STUDIO ↗</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#principles">Principles</a>
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <main id="top">
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+      <p class="eyebrow">
+        A PERSONAL RECORD WORLD
+      </p>
+
+      <h1 class="hero-logo">
+        MOYJI
+      </h1>
+
+      <h2 class="catchphrase">
+        뭐였지?<br>
+        여기 있지.
+      </h2>
+
+      <p class="tagline">
+        모아두고, 다시 찾는 기록들..
+      </p>
+
+      <div class="accent-line"></div>
+
+      <p class="hero-description">
+        메모, 일정, 사람, 장소, 활동, 취미,
+        아이디어와 생활 속 여러 기록을
+        각자의 형태로 남기고 필요할 때 다시 연결합니다.
+      </p>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="section">
+
+      <div class="section-label">
+        01 / ABOUT
+      </div>
+
+      <div class="about-layout">
+
+        <h2 class="section-heading">
+          흩어진 기록을<br>
+          각자의 자리에.
+        </h2>
+
+        <div class="about-content">
+
+          <p>
+            MOYJI는 일상 속에 흩어진 기록들을
+            모아두고 필요할 때 다시 찾아볼 수 있도록
+            만드는 프로젝트입니다.
+          </p>
+
+          <p class="muted">
+            메모는 메모답게,
+            일정은 일정답게,
+            사람 정보는 사람 정보답게 존재합니다.
+          </p>
+
+          <p class="muted">
+            모든 것을 하나로 뒤섞는 대신,
+            각 프로그램은 독립적으로 존재하면서
+            필요한 순간 서로 연결됩니다.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LATEST UPDATE : MEMTH -->
+
+    <section class="section focus-section">
+
+      <div class="section-label">
+        LATEST UPDATE
+      </div>
+
+      <div class="focus-card">
+
+        <div class="focus-top">
+
+          <div>
+
+            <p class="focus-caption">
+              ANDROID / VERSION 0.47.1
+            </p>
+
+            <h2>
+              Memth
+            </h2>
+
+          </div>
+
+          <span class="status developing">
+            Google Play 출시 준비 중
+          </span>
+
+        </div>
+
+        <p class="focus-title">
+          메모, 할 일, 캘린더.<br>
+          필요한 기록을 한곳에.
+        </p>
+
+        <p class="focus-description">
+          Memth는 글, 사진, 손그림으로 생각을 기록하고,
+          해야 할 일을 정리하며,
+          캘린더에서 일정을 확인할 수 있는
+          Android 생활 기록 앱입니다.
+          <br><br>
+          Memo, Todo, Calendar 기능을 구현했으며,
+          Google Calendar를 포함한 기기 캘린더
+          일정 확인도 지원합니다.
+          <br><br>
+          현재 Google Play 출시를 준비하고 있습니다.
+        </p>
+
+        <div class="focus-tags">
+
+          <span>Memo</span>
+          <span>Todo</span>
+          <span>Calendar</span>
+          <span>Google Calendar</span>
+          <span>Backup</span>
+
+        </div>
+
+        <a class="focus-link" href="memth.html">
+          Memth 자세히 보기
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects" class="section">
+
+      <div class="section-label">
+        02 / PROJECTS
+      </div>
+
+      <div class="section-head">
+
+        <h2 class="section-heading">
+          MOYJI의 기록들.
+        </h2>
+
+        <p>
+          각 프로젝트는 독립적으로 작동하면서
+          하나의 기록 세계를 만들어갑니다.
+        </p>
+
+      </div>
+
+
+      <div class="projects">
+
+
+        <!-- MEMTH -->
+
+        <article class="project-card highlight">
+
+          <div class="project-number">
+            01
+          </div>
+
+          <div class="project-head">
+
+            <h3>Memth</h3>
+
+            <span class="status developing">
+              Google Play 출시 준비 중
+            </span>
+
+          </div>
+
+          <p class="project-category">
+            Memo / Todo / Calendar
+          </p>
+
+          <p class="project-description">
+            글, 사진, 손그림으로 메모를 남기고,
+            Todo와 캘린더에서 일상을 관리하는
+            Android 기록 앱.
+            Google Calendar 일정 확인을 지원합니다.
+          </p>
+
+          <a class="memth-link" href="memth.html">
+            Memth 자세히 보기
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </article>
+
+
+        <!-- PEOPLE -->
+
+        <article class="project-card">
+
+          <div class="project-number">
+            02
+          </div>
+
+          <div class="project-head">
+
+            <h3>People</h3>
+
+            <span class="status planning">
+              Planning
+            </span>
+
+          </div>
+
+          <p class="project-category">
+            Person / Customer / Contact
+          </p>
+
+          <p class="project-description">
+            사람, 고객, 거래처와 방문 기록을
+            스테이터스 형태로 정리하는 프로그램.
+          </p>
+
+          <div class="project-note">
+            기획 중 · 상세 페이지 준비 중
+          </div>
+
+        </article>
+
+
+        <!-- PLACES -->
+
+        <article class="project-card">
+
+          <div class="project-number">
+            03
+          </div>
+
+          <div class="project-head">
+
+            <h3>Places</h3>
+
+            <span class="status idea">
+              Idea
+            </span>
+
+          </div>
+
+          <p class="project-category">
+            Place / Visit / Review
+          </p>
+
+          <p class="project-description">
+            방문했던 장소와 경험,
+            리뷰와 관련 기록을 남기는 공간.
+          </p>
+
+          <div class="project-note">
+            구상 중 · 상세 페이지 준비 중
+          </div>
+
+        </article>
+
+
+        <!-- ACTIVITY -->
+
+        <article class="project-card">
+
+          <div class="project-number">
+            04
+          </div>
+
+          <div class="project-head">
+
+            <h3>Activity</h3>
+
+            <span class="status idea">
+              Idea
+            </span>
+
+          </div>
+
+          <p class="project-category">
+            Running / Route / Activity
+          </p>
+
+          <p class="project-description">
+            러닝, 산책과 이동 경로 등
+            생활 속 활동을 기록하는 프로그램.
+          </p>
+
+          <div class="project-note">
+            구상 중 · 상세 페이지 준비 중
+          </div>
+
+        </article>
+
+
+        <!-- FINANCE -->
+
+        <article class="project-card">
+
+          <div class="project-number">
+            05
+          </div>
+
+          <div class="project-head">
+
+            <h3>Finance</h3>
+
+            <span class="status idea">
+              Idea
+            </span>
+
+          </div>
+
+          <p class="project-category">
+            Expense / Income / Purchase
+          </p>
+
+          <p class="project-description">
+            지출, 수입, 구매와 생활 기록을
+            다른 기록들과 연결하는 프로그램.
+          </p>
+
+          <div class="project-note">
+            구상 중 · 상세 페이지 준비 중
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRINCIPLES -->
+
+    <section id="principles" class="section">
+
+      <div class="section-label">
+        03 / PRINCIPLES
+      </div>
+
+      <h2 class="section-heading">
+        기록하는 방법도<br>
+        오래 남을 수 있도록.
+      </h2>
+
+      <div class="principles">
+
+        <article class="principle">
+
+          <span class="principle-number">01</span>
+
+          <h3>Independent</h3>
+
+          <p>
+            메모, 일정, 사람, 장소 등
+            각각의 기록은 자기 목적을 유지합니다.
+          </p>
+
+        </article>
+
+
+        <article class="principle">
+
+          <span class="principle-number">02</span>
+
+          <h3>Connected</h3>
+
+          <p>
+            서로 다른 기록은 필요할 때
+            관계를 통해 자연스럽게 연결됩니다.
+          </p>
+
+        </article>
+
+
+        <article class="principle">
+
+          <span class="principle-number">03</span>
+
+          <h3>Portable</h3>
+
+          <p>
+            특정 운영체제에 종속되지 않고
+            여러 환경에서 읽고 보존할 수 있는
+            데이터 구조를 지향합니다.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- PHILOSOPHY -->
+
+    <section class="section philosophy">
+
+      <div class="section-label">
+        04 / MOYJI
+      </div>
+
+      <blockquote>
+
+        <span>뭐였지?</span>
+
+        <strong>
+          아, 여기 있었지.
+        </strong>
+
+      </blockquote>
+
+      <p>
+        모아두고,<br>
+        다시 찾는 기록들..
+      </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <div class="footer-brand">
+
+        <strong>MOYJI</strong>
+
+        <p>
+          모아두고, 다시 찾는 기록들..
+        </p>
+
+      </div>
+
+      <div class="footer-right">
+
+        <span>
+          <a href="../" class="studio-footer-link">by HIDY STUDIO ↗</a>
+        </span>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+</body>
+
+</html>

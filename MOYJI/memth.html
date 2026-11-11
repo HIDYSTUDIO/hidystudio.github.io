@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Memth — 메모, 할 일, 캘린더를 한곳에서. 사진과 손그림 메모, 반복 할 일, Google Calendar 일정 확인, ZIP 백업까지.">
+  <meta name="theme-color" content="#f8f8f4">
+  <title>Memth — 메모 · 할 일 · 캘린더 | MOYJI</title>
+  <link rel="icon" href="icon-512.png" type="image/png">
+  <style>
+    :root {
+      --bg: #f8f8f4;
+      --white: #ffffff;
+      --ink: #152a23;
+      --body: #3b5148;
+      --muted: #718379;
+      --line: #e0e9e1;
+      --green: #07593c;
+      --green-deep: #054b33;
+      --mint: #e9f2eb;
+      --lilac: #f3edf8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; line-height: 1.7; word-break: keep-all; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    .wrap { width: min(1100px, calc(100% - 48px)); margin: 0 auto; }
+    .top { position: sticky; top: 0; z-index: 20; background: rgba(248,248,244,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .top-inner { min-height: 66px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .home { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 15px; font-weight: 800; letter-spacing: -.02em; }
+    .home span:first-child { color: var(--green); font-size: 19px; }
+    .top-links { display: flex; flex-wrap: wrap; gap: 24px; }
+    .top-links a { text-decoration: none; color: var(--body); font-size: 13px; font-weight: 600; }
+    .top-links a:hover, .home:hover { color: var(--green); }
+    .hero { padding: 86px 0 100px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 54px; }
+    .eyebrow { text-transform: uppercase; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .18em; margin: 0 0 30px; }
+    .brandline { display: flex; gap: 18px; align-items: center; margin-bottom: 30px; }
+    .brandicon { width: 75px; height: 75px; border-radius: 22px; background: white; border: 1px solid var(--line); object-fit: cover; }
+    .brandname { margin: 0; font-size: clamp(56px, 7vw, 90px); line-height: 1; letter-spacing: -.075em; font-weight: 800; }
+    .hero h2 { margin: 0 0 22px; font-size: clamp(33px, 4vw, 52px); line-height: 1.24; letter-spacing: -.05em; font-weight: 800; }
+    .hero-desc { max-width: 520px; margin: 0 0 24px; color: var(--body); font-size: 18px; }
+    .pill-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .pill { border: 1px solid #cadacd; background: var(--white); color: var(--green-deep); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; }
+    .hero-note { margin-top: 30px; color: var(--muted); font-size: 12px; }
+    .visual { min-width: 0; position: relative; min-height: 620px; border-radius: 32px; background: radial-gradient(ellipse at 45% 40%, #e1eee5 0, #eaf3eb 48%, #f1f6f0 100%); overflow: hidden; display: flex; justify-content: center; align-items: center; gap: 18px; padding: 44px 18px; }
+    .visual::after { content: ""; position: absolute; width: 280px; height: 280px; border: 1px solid rgba(10,90,58,.10); border-radius: 50%; right: -110px; top: -100px; }
+    .phone { position: relative; width: 43%; min-width: 0; max-width: 225px; padding: 6px; background: #101914; border-radius: 29px; box-shadow: 0 23px 55px rgba(8, 61, 35, .22); overflow: hidden; }
+    .phone img { border-radius: 23px; width: 100%; height: auto; }
+    .phone.second { transform: translateY(36px); }
+    .section { border-top: 1px solid var(--line); padding: 100px 0; }
+    .section-label { margin: 0 0 20px; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+    .section h2 { margin: 0 0 20px; font-size: clamp(28px, 4vw, 45px); letter-spacing: -.055em; line-height: 1.3; }
+    .lead { margin: 0 0 38px; max-width: 780px; color: var(--body); font-size: 17px; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 50px; align-items: center; }
+    .intro p { color: var(--body); font-size: 17px; margin: 0 0 18px; }
+    .intro > *, .feature > *, .hero > * { min-width: 0; }
+    .intro img { height: auto; min-width: 0; border: 1px solid var(--line); background: white; border-radius: 23px; width: 100%; }
+    .feature { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 70px; align-items: start; }
+    .feature.reverse { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+    .feature.reverse .feature-copy { order: 2; }
+    .feature.reverse .screen-area { order: 1; }
+    .feature-copy { min-width: 0; position: sticky; top: 115px; }
+    .feature-copy p { color: var(--body); font-size: 16px; max-width: 365px; margin: 0 0 25px; }
+    .feature-list { padding-left: 20px; color: var(--body); font-size: 14px; }
+    .feature-list li { margin: 9px 0; }
+    .screen-area { min-width: 0; width: 100%; background: #ecf2ed; border-radius: 25px; padding: 34px; display: flex; justify-content: center; align-items: flex-start; gap: 20px; }
+    .screen-area.lilac { background: var(--lilac); }
+    .screen-area img { width: min(100%, 275px); border-radius: 15px; border: 1px solid rgba(18,64,40,.09); box-shadow: 0 14px 32px rgba(14,65,35,.08); }
+    .screen-area.pair img { width: min(46%, 240px); }
+    .screen-caption { margin-top: 12px; text-align: center; color: var(--muted); font-size: 12px; }
+    .small-features { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 32px; }
+    .small-card { background: var(--white); border: 1px solid var(--line); padding: 27px; border-radius: 17px; }
+    .small-card strong { display: block; font-size: 18px; margin-bottom: 10px; }
+    .small-card p { margin: 0; color: var(--body); font-size: 14px; }
+    .ending { text-align: center; padding: 100px 0 105px; }
+    .ending h2 { font-size: clamp(34px,5vw,55px); line-height: 1.3; letter-spacing: -.055em; margin: 0 0 17px; }
+    .ending p { max-width: 580px; margin: 0 auto; color: var(--body); }
+    footer { border-top: 1px solid var(--line); padding: 38px 0 48px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 13px; }
+    footer strong { color: var(--ink); font-size: 17px; }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; padding: 65px 0 85px; }
+      .visual { min-height: 500px; max-width: 640px; width: 100%; margin: auto; }
+      .intro, .feature, .feature.reverse { grid-template-columns: 1fr; gap: 30px; }
+      .feature.reverse .feature-copy, .feature.reverse .screen-area { order: initial; }
+      .feature-copy { min-width: 0; position: static; }
+      .intro img { max-width: 640px; }
+      .small-features { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 32px, 1100px); }
+      .top-inner { min-height: 62px; }
+      .top-links { gap: 15px; }
+      .top-links a { font-size: 12px; }
+      .hero { gap: 40px; }
+      .brandline { gap: 12px; }
+      .brandicon { width: 60px; height: 60px; border-radius: 18px; }
+      .hero-desc { font-size: 16px; }
+      .visual { min-height: 400px; border-radius: 23px; padding: 26px 14px; gap: 11px; }
+      .phone { padding: 4px; border-radius: 20px; }
+      .phone img { border-radius: 16px; }
+      .section { padding: 74px 0; }
+      .screen-area { padding: 20px 13px; gap: 10px; border-radius: 20px; }
+      .screen-area img { max-width: 240px; }
+      .small-features { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    .top-links a.studio-link { color:var(--green); font-weight:800; white-space:nowrap; }
+    @media(max-width:540px) {
+      .top-links { gap:10px; }
+      .top-links a[href="#backup"] { display:none; }
+      .top-links a { font-size:11px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top" aria-label="상단 메뉴">
+    <div class="wrap top-inner">
+      <a class="home" href="index.html"><span aria-hidden="true">←</span><span>MOYJI</span></a>
+      <div class="top-links"><a href="../" class="studio-link">STUDIO ↗</a><a href="#features">주요 기능</a><a href="#backup">백업·내보내기</a></div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="wrap hero">
+      <div>
+        <p class="eyebrow">MOYJI / APPLICATION 01</p>
+        <div class="brandline"><img class="brandicon" src="icon-512.png" width="75" height="75" alt="Memth 앱 아이콘"><h1 class="brandname">Memth</h1></div>
+        <h2>메모, 할 일, 캘린더.<br>필요한 기록을 한곳에.</h2>
+        <p class="hero-desc">글과 사진, 손그림으로 생각을 남기고, 해야 할 일을 정리하고, 일정을 확인하는 생활 기록 앱입니다.</p>
+        <div class="pill-list"><span class="pill">Memo</span><span class="pill">Todo</span><span class="pill">Calendar</span><span class="pill">Google Calendar 연동</span></div>
+        <p class="hero-note">Google Play 출시 준비 중 · Android 0.47.1 기준 소개</p>
+      </div>
+      <div class="visual" aria-label="Memth 실제 앱 화면 미리보기">
+        <div class="phone"><img src="01-memo-editor.png" width="1440" height="2560" alt="글과 산책 경로 손그림을 함께 기록한 Memth 메모 편집 화면"></div>
+        <div class="phone second"><img src="04-calendar.png" width="1440" height="2560" alt="메모와 할 일, 일정을 표시하는 Memth 월간 캘린더 화면"></div>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="about-title">
+      <div class="wrap intro">
+        <div>
+          <p class="section-label">01 / ABOUT Memth</p>
+          <h2 id="about-title">생각이 떠올랐을 때,<br>바로 기록할 수 있도록.</h2>
+          <p>Memth는 메모를 쓰고, 할 일을 확인하고, 캘린더에서 일정을 살펴보는 과정을 한 앱 안에 담았습니다.</p>
+          <p>기능을 억지로 하나로 합치기보다 각 기능에 집중할 수 있도록 구성했습니다. 필요한 때 원하는 화면으로 이동해 기록을 이어갈 수 있습니다.</p>
+        </div>
+        <img src="feature-graphic-1024x500.png" width="1024" height="500" alt="Memth — 메모, 할 일, 캘린더를 나타내는 소개 이미지">
+      </div>
+    </section>
+
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="wrap feature">
+        <div class="feature-copy">
+          <p class="section-label">02 / MEMO</p>
+          <h2 id="features-title">글도, 사진도,<br>손그림도 메모에.</h2>
+          <p>떠오른 생각을 글로 적고, 이미지나 손그림을 더해 기록할 수 있습니다. 자주 보는 메모는 고정하고, 제목과 본문을 검색해 다시 찾을 수 있습니다.</p>
+          <ul class="feature-list"><li>글·사진·손그림을 포함한 메모</li><li>텍스트 서식 편집</li><li>메모 고정, 그룹 분류, 검색</li></ul>
+        </div>
+        <div>
+          <div class="screen-area pair"><img src="01-memo-editor.png" width="1440" height="2560" loading="lazy" alt="텍스트와 손그림을 입력한 메모 편집 화면"><img src="02-memo-list.png" width="1440" height="2560" loading="lazy" alt="고정한 메모와 여러 기록이 표시되는 메모 목록 화면"></div>
+          <p class="screen-caption">실제 Memth 0.47.1 Android 화면</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="todo-title">
+      <div class="wrap feature reverse">
+        <div class="feature-copy">
+          <p class="section-label">03 / TODO</p>
+          <h2 id="todo-title">오늘 할 일부터<br>반복하는 일까지.</h2>
+          <p>오늘과 내일의 할 일을 구분해 확인하고, 완료 여부를 체크할 수 있습니다. 반복 주기와 알림을 설정해 정기적으로 해야 하는 일도 관리합니다.</p>
+          <ul class="feature-list"><li>할 일 작성·완료 체크</li><li>오늘·내일 일정 구분</li><li>반복 주기와 알림 설정</li></ul>
+        </div>
+        <div>
+          <div class="screen-area lilac"><img src="03-todo.png" width="1440" height="2560" loading="lazy" alt="오늘과 내일의 할 일, 반복 일정을 보여주는 Memth Todo 화면"></div>
+          <p class="screen-caption">실제 Memth 0.47.1 Android 화면</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="calendar-title">
+      <div class="wrap feature">
+        <div class="feature-copy">
+          <p class="section-label">04 / CALENDAR</p>
+          <h2 id="calendar-title">일정과 기록을<br>날짜로 살펴보세요.</h2>
+          <p>월간 캘린더에서 일정과 메모, Todo를 확인할 수 있습니다. Google Calendar를 비롯해 기기에 연결된 캘린더 일정도 함께 표시할 수 있습니다.</p>
+          <ul class="feature-list"><li>월간 캘린더 및 날짜별 기록</li><li>메모·Todo 표시</li><li>기기에 연결된 외부 캘린더 일정 확인</li></ul>
+        </div>
+        <div>
+          <div class="screen-area"><img src="04-calendar.png" width="1440" height="2560" loading="lazy" alt="기기 일정과 메모 및 Todo가 함께 표시되는 Memth 월간 캘린더 화면"></div>
+          <p class="screen-caption">실제 Memth 0.47.1 Android 화면 · 캘린더 연결은 기기 권한과 설정에 따라 달라집니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="backup" class="section" aria-labelledby="backup-title">
+      <div class="wrap">
+        <p class="section-label">05 / YOUR RECORDS</p>
+        <h2 id="backup-title">기록을 남기고,<br>필요할 때 꺼낼 수 있도록.</h2>
+        <p class="lead">메모를 작성하고 할 일을 관리하는 데 별도 계정 등록이 필요하지 않습니다. 기록을 보관하거나 다른 환경에서 활용할 수 있는 내보내기 기능도 제공합니다.</p>
+        <div class="small-features">
+          <article class="small-card"><strong>ZIP 백업·복원</strong><p>메모와 첨부 이미지, 손그림, Todo 완료 기록 등을 백업하고 복원할 수 있습니다.</p></article>
+          <article class="small-card"><strong>메모 HTML 내보내기</strong><p>내보낸 메모를 브라우저에서 읽을 수 있는 HTML 형식으로 활용할 수 있습니다.</p></article>
+          <article class="small-card"><strong>Todo ICS 내보내기</strong><p>Todo 일정을 다른 캘린더 도구에서 사용할 수 있는 ICS 일정 파일로 내보낼 수 있습니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap ending">
+      <p class="section-label">Memth × MOYJI</p>
+      <h2>모아두고,<br>다시 찾는 기록들.</h2>
+      <p>Memth는 메모, 할 일, 캘린더를 편하게 사용하는 데 집중합니다. 기록을 정리하고 다시 찾는 경험을 만드는 MOYJI의 첫 번째 생활 기록 앱입니다.</p>
+    </section>
+  </main>
+  <footer class="wrap"><div><strong>Memth</strong><div>Memo · Todo · Calendar</div></div><div>MOYJI by <a href="../">HIDY STUDIO ↗</a></div></footer>
+</body>
+</html>
