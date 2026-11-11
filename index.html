@@ -34,7 +34,7 @@
     header { background: rgba(250,249,246,.88); border-bottom: 1px solid var(--edge); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px); }
     .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 0; }
-    .brand-logo { width: 43px; height: 43px; object-fit: contain; }
+    .brand-logo { width: 48px; height: 48px; object-fit: contain; flex: none; }
     .brand-word { display: flex; flex-direction: column; gap: 3px; }
     .brand-word strong { font-weight: 900; letter-spacing: -.045em; font-size: 18px; }
     .brand-word small { color: var(--sub); font-size: 9px; letter-spacing: .18em; font-weight: 750; }
@@ -112,6 +112,18 @@
       .footer-row { align-items: start; }
     }
     @media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card,.card-visit { transition: none; } }
+
+    /* HIDY STUDIO: original brand art (2026) */
+    .hero-brand-heading { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 22px 0 28px; }
+    .hero-brand-symbols { display: block; width: clamp(300px, 55vw, 650px); max-width: 100%; height: auto; object-fit: contain; }
+    .hero-brand-text { display: block; font-size: clamp(39px, 5.4vw, 68px); line-height: 1.12; font-weight: 900; letter-spacing: -.066em; white-space: nowrap; }
+    .hero-brand-dot { color: var(--orange); }
+    @media (max-width: 700px) {
+      .brand-logo { width: 39px; height: 39px; }
+      .hero-brand-heading { gap: 8px; margin: 21px 0 25px; }
+      .hero-brand-symbols { width: min(100%, 550px); }
+      .hero-brand-text { font-size: clamp(31px, 8vw, 48px); }
+    }
   </style>
 </head>
 <body>
@@ -119,7 +131,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="/" aria-label="HIDY STUDIO 홈">
-        <img class="brand-logo" src="HidyGames/assets/img/hidystudio-mark.png" alt="" onerror="this.style.display='none'" />
+        <img class="brand-logo" src="hidy-header-mark.png" alt="" onerror="this.style.display='none'" />
         <span class="brand-word"><strong>HIDY STUDIO</strong><small>PLAY · CREATE · EXPLORE</small></span>
       </a>
       <div class="nav-right">
@@ -139,7 +151,10 @@
   <main id="main">
     <section class="hero container" aria-labelledby="hero-title">
       <p class="eyebrow"><span class="dot"></span>INDEPENDENT CREATIVE STUDIO</p>
-      <h1 id="hero-title">HIDY<br />STUDIO<span style="color: var(--orange)">.</span></h1>
+      <h1 id="hero-title" class="hero-brand-heading">
+        <img class="hero-brand-symbols" src="hidy-hero-symbols.png" alt="" aria-hidden="true" width="1820" height="628" />
+        <span class="hero-brand-text">HIDY STUDIO<span class="hero-brand-dot">.</span></span>
+      </h1>
       <div class="hero-lower">
         <p class="hero-lead" data-ko="작은 아이디어를 실제로 만들어 갑니다. 즐길 수 있는 게임부터 일상에 도움이 되는 소프트웨어까지, HIDY STUDIO의 두 공간을 소개합니다." data-en="Turning small ideas into things you can use and enjoy. Explore two spaces at HIDY STUDIO, from games to everyday software.">작은 아이디어를 실제로 만들어 갑니다. 즐길 수 있는 게임부터 일상에 도움이 되는 소프트웨어까지, HIDY STUDIO의 두 공간을 소개합니다.</p>
         <span class="hero-side">GAMES / MOYJI — 2026</span>
